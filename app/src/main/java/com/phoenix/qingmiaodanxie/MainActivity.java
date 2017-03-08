@@ -17,4 +17,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
+    @Override
+    protected void onResume() {
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+            }
+        };
+        thread.run();
+    }
 }
