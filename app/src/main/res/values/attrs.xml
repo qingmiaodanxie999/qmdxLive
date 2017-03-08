@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PhoenixToolbar">
+        <attr name="rightButtonIcon" format="reference"/>
+        <attr name="rightButtonText" format="string"/>
+        <attr name="leftButtonIcon" format="reference"/>
+        <attr name="isShowSearchView" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="NumberAddSubView">
+        <attr name="value" format="integer|reference" />
+        <attr name="minValue" format="integer|reference" />
+        <attr name="maxValue" format="integer|reference" />
+        <attr name="addBtnBg" format="reference" />
+        <attr name="subBtnBg" format="reference" />
+        <attr name="numTvBg" format="reference" />
+    </declare-styleable>
+</resources>
