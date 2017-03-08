@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--选中的时候-->
+    <item android:state_focused="false" android:state_checked="true" android:color="#eb4f38"/>
+    <!--活跃的时候-->
+    <item android:state_active="true"  android:state_checked="true" android:color="#eb4f38"/>
+    <item android:state_focused="false" android:state_checked="false" android:color="#a9b7b7"/>
+    <item android:state_focused="false" android:state_checked="false" android:color="#a9b7b7"/>
+</selector>
