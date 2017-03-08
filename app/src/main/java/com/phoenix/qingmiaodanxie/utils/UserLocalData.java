@@ -3,8 +3,8 @@ package com.phoenix.qingmiaodanxie.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.beicai.jd_shop.entity.User;
-import com.beicai.jd_shop.http.Contants;
+import com.phoenix.qingmiaodanxie.entity.User;
+import com.phoenix.qingmiaodanxie.http.Contants;
 
 /**
  * Created by 王东 on 2017/3/2.
