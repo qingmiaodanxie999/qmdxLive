@@ -21,6 +21,7 @@
         android:layout_height="60dip"
         android:background="#ffffff"
         android:gravity="center"
+        android:clipChildren="false"
         android:orientation="horizontal">
 
         <RadioGroup
@@ -57,7 +58,6 @@
                 android:checked="false"
                 android:drawableTop="@drawable/radio3"
                 android:gravity="center" />
-
         </RadioGroup>
     </LinearLayout>
 </LinearLayout>
