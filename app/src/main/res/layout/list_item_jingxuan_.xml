@@ -24,14 +24,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="用户ID"
             android:id="@+id/jingxuan_user_name"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="所在地"
             android:id="@+id/jingxuan_user_location"/>
     </LinearLayout>
@@ -48,11 +48,12 @@
             android:background="#00000000"/>
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/jingxuan_captuer_sdv"
+        fresco:actualImageScaleType="focusCrop"
         fresco:viewAspectRatio="1"
         fresco:placeholderImage="@mipmap/default_loading"
         fresco:roundAsCircle="false"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/jingxuan_img_sdv"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

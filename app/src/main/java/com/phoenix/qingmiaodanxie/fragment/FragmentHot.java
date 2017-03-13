@@ -4,21 +4,30 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cjj.MaterialRefreshLayout;
 import com.phoenix.qingmiaodanxie.R;
-import com.phoenix.qingmiaodanxie.adapter.JXAdapter;
-import com.phoenix.qingmiaodanxie.entity.Live;
+import com.phoenix.qingmiaodanxie.adapter.HottAdapter;
+import com.phoenix.qingmiaodanxie.entity.LiveBean;
+import com.phoenix.qingmiaodanxie.http.Contants;
+import com.phoenix.qingmiaodanxie.http.UserCallback;
+import com.phoenix.qingmiaodanxie.widget.OnLoadMoreListener;
+import com.phoenix.qingmiaodanxie.widget.OnMultiItemClickListeners;
+import com.phoenix.qingmiaodanxie.widget.ViewHolder;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
 
 /**
  * Created by 王东 on 2017/3/8.
@@ -26,37 +35,96 @@ import butterknife.ButterKnife;
 public class FragmentHot extends Fragment {
     @BindView(R.id.hot_rv)
     RecyclerView mRecyclerView;//控件对应的ID
-    @BindView(R.id.hot_mrl)
-    MaterialRefreshLayout mRefreshLayout;
+    @BindView(R.id.hot_swipe)
+    SwipeRefreshLayout favSwipe;
     private Context mContext;
-    private JXAdapter mAdapter;
-    private List<Live>  mLives = new ArrayList<>();
+    private HottAdapter mAdapter;
+    OkHttpUtils httpUtils;
+    private List<LiveBean.ResultBean.ListBean> mListBeen;
+    private List<LiveBean> loadlist = new ArrayList<>();
+    private int page = 1;
     public static FragmentHot newInstance() {
         FragmentHot fragment = new FragmentHot();
         return fragment;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hot,container,false);
-        ButterKnife.bind(this,view);
+        View view = inflater.inflate(R.layout.fragment_hot, container, false);
+        ButterKnife.bind(this, view);
         mContext = getActivity();
-        initTestData();
         return view;
     }
-    private  void initTestData(){
-        for (int i = 0; i < 5; i++) {
-            Live live = new Live();
-            live.name ="啦啦啦啦";
-            live.head = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489052733292&di=e77762cd7687af72f7fe6cc175c353a7&imgtype=0&src=http%3A%2F%2Fc.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fd50735fae6cd7b89f4327ac50a2442a7d9330e1d.jpg";
-            live.place = "金星";
-            mLives.add(live);
-        }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        httpUtils = OkHttpUtils.getInstance();
+        mListBeen = new ArrayList<>();
+        initRefreshView();
     }
-//    private void initData() {
-//        mAdapter = new JXAdapter(mContext,mLives);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-//        mRecyclerView.addItemDecoration(new DividerItemDecoration(
-//                getContext(),DividerItemDecoration.VERTICAL_LIST));
-//    }
+
+    private void initRefreshView() {
+        favSwipe.setColorSchemeColors(getActivity().getResources().getColor(R.color.colorPrimary));
+        favSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                page = 1;
+                getFavLive(page);
+
+            }
+        });
+        //初始化adapter
+        mAdapter = new HottAdapter(getActivity(), null, true);
+        //设置加载更多触发的事件监听
+        mAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(boolean isReload) {
+                page++;
+                getFavLive(page);
+            }
+        });
+        mAdapter.setOnMultiItemClickListener(new OnMultiItemClickListeners<LiveBean.ResultBean.ListBean>() {
+            @Override
+            public void onItemClick(ViewHolder viewHolder, LiveBean.ResultBean.ListBean data, int position, int viewType) {
+//                PlayerActivity.start(getActivity());
+
+            }
+        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        getFavLive(page);
+    }
+
+    private void getFavLive(final int page) {
+        String url = Contants.API.JINGXUAN + "/live/find.json";
+        Log.e("TAG", "url=====-=" + url);
+        httpUtils.post()
+                .url(url)
+                .addParams("type", "1")
+                .addParams("page", page + "")
+                .build()
+                .execute(new UserCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(LiveBean.ResultBean response, int id) {
+                        mListBeen = response.getList();
+                        if (page == 1) {
+                            mAdapter.setNewData(mListBeen);
+                            favSwipe.setRefreshing(false);
+                            mAdapter.setLoadingView(R.layout.load_more_layout);
+                        } else {
+                            if (mListBeen != null && mListBeen.size() > 0) {
+                                mAdapter.setLoadMoreData(response.getList());
+                            } else {
+                                mAdapter.setLoadEndView(R.layout.load_end_layout);
+                            }
+                        }
+                    }
+                });
+    }
 }

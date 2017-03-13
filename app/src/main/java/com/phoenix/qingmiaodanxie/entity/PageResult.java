@@ -1,13 +1,12 @@
 package com.phoenix.qingmiaodanxie.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by 王东 on 2017/3/9.
+ * Created by 王东 on 2017/2/21.
  */
 
-public class JXObject<T> extends BaseBean implements Serializable{
+public class PageResult<T> {
     private int totalCount;
     private int currentPage;
     private int totalPage;

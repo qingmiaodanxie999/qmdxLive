@@ -4,18 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.cjj.MaterialRefreshLayout
-        android:layout_width="match_parent"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/hot_swipe"
         android:layout_height="match_parent"
-        android:id="@+id/hot_mrl"
-        app:overlay="true"
-        app:wave_show="true"
-        app:wave_color="#90ffffff"
-        app:progress_colors="@array/material_colors"
-        app:wave_height_type="higher">
+        android:layout_width="match_parent">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/hot_rv"/>
-    </com.cjj.MaterialRefreshLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>>
 </LinearLayout>
