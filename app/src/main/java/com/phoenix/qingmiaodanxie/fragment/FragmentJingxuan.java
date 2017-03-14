@@ -17,6 +17,7 @@ import com.phoenix.qingmiaodanxie.adapter.HottAdapter;
 import com.phoenix.qingmiaodanxie.entity.LiveBean;
 import com.phoenix.qingmiaodanxie.http.Contants;
 import com.phoenix.qingmiaodanxie.http.UserCallback;
+import com.phoenix.qingmiaodanxie.player.PlayerActivity;
 import com.phoenix.qingmiaodanxie.widget.OnLoadMoreListener;
 import com.phoenix.qingmiaodanxie.widget.OnMultiItemClickListeners;
 import com.phoenix.qingmiaodanxie.widget.ViewHolder;
@@ -88,7 +89,7 @@ public class FragmentJingxuan extends Fragment {
         mAdapter.setOnMultiItemClickListener(new OnMultiItemClickListeners<LiveBean.ResultBean.ListBean>() {
             @Override
             public void onItemClick(ViewHolder viewHolder, LiveBean.ResultBean.ListBean data, int position, int viewType) {
-//                PlayerActivity.start(getActivity());
+                PlayerActivity.start(getActivity());
 
             }
         });

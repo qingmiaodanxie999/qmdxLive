@@ -34,39 +34,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="北才"
+                    android:text="广寒宫"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="高龙龙"
+                    android:text="嫦娥"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
             </LinearLayout>
 
 
-            <com.facebook.drawee.view.SimpleDraweeView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/avatar"
                 android:layout_width="40dip"
                 android:layout_height="40dip"
                 android:src="@mipmap/tim"
-                fresco:actualImageScaleType="focusCrop"
-                fresco:viewAspectRatio="1"
-                fresco:placeholderImage="@mipmap/tim"
-                fresco:roundAsCircle="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_centerInParent="true"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorAccent" />
 
         </RelativeLayout>
 
-        <com.beicai.xiaoyuanzhibo.player.HorizontalListView
+        <com.phoenix.qingmiaodanxie.player.HorizontalListView
             android:id="@+id/user_listview"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp">
-        </com.beicai.xiaoyuanzhibo.player.HorizontalListView>
+        </com.phoenix.qingmiaodanxie.player.HorizontalListView>
     </LinearLayout>
 
     <RelativeLayout
@@ -245,7 +243,7 @@
 
     </FrameLayout>
 
-    <com.beicai.xiaoyuanzhibo.Like.HeartLayout
+    <com.phoenix.qingmiaodanxie.love.HeartLayout
         android:id="@+id/heart_layout"
         android:layout_width="100dip"
         android:layout_height="300dip"
