@@ -25,4 +25,61 @@
     <color name="darkgray">#a9a9a9</color>
     <!--金黄色-->
     <color name="goldyellow">#ff9428</color>
+    <color name="recorder_bg_new">#00000000</color>
+
+
+    <!-- 背景色 -->
+    <color name="at_message_unread">#f7f3ec</color>
+    <color name="at_message_readed">#f8f8f7</color>
+    <color name="recommand_guide_head">#99000000</color>
+
+    <!-- 文字颜色 -->
+    <color name="font_color_white">#ffffff</color>
+    <color name="font_color_3">#333333</color>
+    <color name="font_color_blue">#336666</color>
+    <color name="font_color_1">#2589c3</color>
+    <color name="font_color_2">#666666</color>
+    <color name="font_color_4">#0f0f0f</color>
+    <color name="font_color_5">#ffffff</color>
+    <color name="font_color_6">#f0f0f0</color>
+    <color name="font_color_7">#888888</color>
+    <color name="font_color_8">#2589c3</color>
+    <color name="font_color_9">#a3a3a3</color>
+    <color name="font_color_10">#373737</color>
+    <color name="font_color_11">#aaaaaa</color>
+    <color name="font_color_12">#d7d7d7</color>
+    <color name="font_color_13">#999999</color>
+    <color name="font_color_14">#e0e0e0</color>
+    <color name="font_color_15">#edecec</color>
+    <color name="font_color_16">#eb942b</color>
+    <color name="font_color_17">#3d3d3d</color>
+    <color name="font_color_18">#0098a3</color>
+    <color name="font_color_19">#f1a330</color>
+    <color name="font_color_20">#f87e31</color>
+    <color name="font_color_21">#00919c</color>
+    <color name="font_color_22">#e1e1e1</color>
+    <color name="font_color_23">#0099AA</color>
+    <color name="font_color_24">#2c2c2c</color>
+    <color name="font_color_25">#FF75C751</color>
+    <color name="font_color_26">#626262</color>
+    <color name="font_color_27">#44BBCC</color>
+    <color name="font_color_28">#e85932</color>
+    <color name="font_color_29">#4499aa</color>
+    <color name="font_color_30">#bbbbbb</color>
+    <color name="font_color_31">#00bbbb</color>
+    <color name="font_color_32">#80ffffff</color>
+    <color name="font_color_33">#ff00bbbb</color>
+    <color name="font_color_34">#2c758d</color>
+    <color name="font_color_35">#368ca8</color>
+    <color name="font_color_36">#22cccc</color>
+    <color name="font_color_37">#081d29</color>
+    <color name="font_color_38">#1d5270</color>
+    <color name="font_color_39">#fbfbfb</color>
+    <color name="font_color_40">#737b8c</color>
+    <color name="font_color_41">#ae4ce6</color>
+    <color name="font_color_42">#4facf3</color>
+    <color name="font_color_43">#bebebe</color>
+    <color name="font_color_44">#f2a93f</color>
+
+    <color name="trans_parent">#00000000</color>
 </resources>

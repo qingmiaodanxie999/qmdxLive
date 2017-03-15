@@ -10,5 +10,7 @@ public class Contants {
     public static class API{
         public static final String BASE_URL = "http://121.42.26.175:14444";
         public static final String JINGXUAN = BASE_URL ;
+        public static final String LOGIN = BASE_URL +"/live/login.json";
+        public static final String REGIST = BASE_URL +"/live/register.json";
     }
 }

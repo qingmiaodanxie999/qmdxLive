@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/gainsboro_press">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/default_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mine_head_civ"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:id="@+id/mine_username_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center_horizontal"
+                android:text=" --"/>
+            <Button
+                android:id="@+id/mine_userlogin_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_horizontal"
+                android:text="点击登录"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow android:padding="10dp">
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:text="我的订单"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"/>
+        </TableRow>
+        <View style="@style/line_vertical"
+            android:background="@color/red_btn_color_pressed"/>
+
+        <TableRow android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginLeft="@dimen/item_Padding"
+                android:text="我的收藏"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"/>
+        </TableRow>
+
+        <View style="@style/line_vertical"
+            android:background="@color/red_btn_color_pressed"/>
+        <TableRow android:padding="10dp">
+            <TextView
+                android:layout_marginLeft="@dimen/item_Padding"
+                android:text="收货地址"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"/>
+        </TableRow >
+        <View style="@style/line_vertical"
+            android:background="@color/red_btn_color_pressed"/>
+        <TableRow android:padding="10dp">
+            <TextView
+                android:layout_marginLeft="@dimen/item_Padding"
+                android:text="我的消息"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"/>
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/mine_reg_btn"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:background="@drawable/bg_btn_style_red"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:background="@drawable/bg_btn_style_red"/>
+</LinearLayout>

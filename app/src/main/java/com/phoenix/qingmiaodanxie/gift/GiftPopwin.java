@@ -76,11 +76,25 @@ public class GiftPopwin extends PopupWindow {
 
     private void initGift() {
         List<Gift> gifts = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 9; i++) {
             Gift gift= new Gift();
             gift.name = "飞机"+i;
             gift.gift_url = "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=338834550,1574741889&fm=23&gp=0.jpg";
-            gift.gift_price = 100;
+            gift.gift_price = 1000;
+            gifts.add(gift);
+        }
+        for (int i = 0; i < 9; i++) {
+            Gift gift= new Gift();
+            gift.name = "神秘礼盒"+i;
+            gift.gift_url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489507507156&di=0cae37b3ce5571b72aadfdd32244b61b&imgtype=0&src=http%3A%2F%2Fuploads.yjbys.com%2Fallimg%2F201502%2F3944-15021016495ST.jpg";
+            gift.gift_price = 500;
+            gifts.add(gift);
+        }
+        for (int i = 0; i < 9; i++) {
+            Gift gift= new Gift();
+            gift.name = "珠宝钻石戒指"+i;
+            gift.gift_url = "http://img.bavlo.com/NewsImage/20130410101232_642.jpeg";
+            gift.gift_price = 10000;
             gifts.add(gift);
         }
         GiftPageUtils.INSTANCE.init(context, gifts);

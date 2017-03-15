@@ -60,8 +60,6 @@ public class GiftAdapter extends BaseAdapter {
             viewHolder.name = (TextView) convertView
                     .findViewById(R.id.item_name);
             convertView.setTag(viewHolder);
-
-
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

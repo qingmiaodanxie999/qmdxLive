@@ -3,8 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <android.opengl.GLSurfaceView
+        android:id="@+id/camera_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="直播"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
 </LinearLayout>

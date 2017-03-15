@@ -32,7 +32,6 @@ public abstract class UserCallback extends Callback<LiveBean.ResultBean> {
 //    }
     @Override
     public LiveBean.ResultBean parseNetworkResponse(Response response, int id) throws Exception {
-//        PageResult<LiveBean.ResultBean.ListBean> liveResult = new PageResult<>();
         String string = response.body().string();
         LiveBean liveBean = new Gson().fromJson(string, LiveBean.class);
         Log.e("TAG","PageResult========="+liveBean.getResult().getList().size());

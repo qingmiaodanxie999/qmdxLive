@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="buttonCornerSize">2.0dip</dimen>
+    <dimen name="item_Padding">3dp</dimen>
 
     <dimen name="heart_anim_bezier_x_rand">40.0dp</dimen>
     <dimen name="heart_anim_init_x">50.0dp</dimen>
@@ -12,4 +14,20 @@
     <dimen name="heart_anim_x_point_factor">30.0dp</dimen>
     <dimen name="heart_size_height">27.3dp</dimen>
     <dimen name="heart_size_width">32.5dp</dimen>
+
+    <!-- font size -->
+    <dimen name="font_size_52px">26sp</dimen>
+    <dimen name="font_size_44px">22sp</dimen>
+    <dimen name="font_size_42px">21sp</dimen>
+    <dimen name="font_size_40px">20sp</dimen>
+    <dimen name="font_size_38px">19sp</dimen>
+    <dimen name="font_size_36px">18sp</dimen>
+    <dimen name="font_size_34px">17sp</dimen>
+    <dimen name="font_size_32px">16sp</dimen>
+    <dimen name="font_size_30px">15sp</dimen>
+    <dimen name="font_size_28px">14sp</dimen>
+    <dimen name="font_size_26px">13sp</dimen>
+    <dimen name="font_size_24px">12sp</dimen>
+    <dimen name="font_size_22px">11sp</dimen>
+    <dimen name="font_size_20px">10sp</dimen>
 </resources>

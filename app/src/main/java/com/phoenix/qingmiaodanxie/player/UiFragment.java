@@ -221,7 +221,9 @@ public class UiFragment extends Fragment{
             public void keyBoardHide(int height) {//软键盘隐藏：隐藏聊天输入框并显示聊天按钮，执行显示title动画，并修改listview高度和装载礼物容器的高度*/
                 tvChat.setVisibility(View.VISIBLE);
                 llinputparent.setVisibility(View.GONE);
-
+                animateToShow();
+                dynamicChangeListviewH(150);
+                dynamicChangeGiftParentH(false);
             }
         });
     }
@@ -271,6 +273,32 @@ public class UiFragment extends Fragment{
         ViewGroup.LayoutParams layoutParams = lvmessage.getLayoutParams();
         layoutParams.height = DisplayUtil.dip2px(getActivity(), heightPX);
         lvmessage.setLayoutParams(layoutParams);
+    }
+
+    /**
+     * 头部布局执行显示的动画
+     */
+    private void animateToShow() {
+        ObjectAnimator leftAnim = ObjectAnimator.ofFloat(rlsentimenttime, "translationX", -rlsentimenttime.getWidth(), 0);
+        ObjectAnimator topAnim = ObjectAnimator.ofFloat(llpicimage, "translationY", -llpicimage.getHeight(), 0);
+        animatorSetShow.playTogether(leftAnim, topAnim);
+        animatorSetShow.setDuration(300);
+        animatorSetShow.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                isOpen = false;
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                isOpen = true;
+            }
+        });
+        if (!isOpen) {
+            animatorSetShow.start();
+        }
     }
     /**
      * 头部布局执行退出的动画

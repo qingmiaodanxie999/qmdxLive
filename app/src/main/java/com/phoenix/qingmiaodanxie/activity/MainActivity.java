@@ -1,5 +1,6 @@
 package com.phoenix.qingmiaodanxie.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         content.setAdapter(mAdapter);
     }
 
-    @OnClick({R.id.main_home, R.id.main_wode})
+    @OnClick({R.id.main_home, R.id.main_wode,R.id.main_live})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_home:
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.main_wode:
                 content.setCurrentItem(1);
+                break;
+            case R.id.main_live:
+                startActivity(new Intent(MainActivity.this,CameraActivity.class));
                 break;
         }
     }
