@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.phoenix.qingmiaodanxie.R;
@@ -32,6 +33,8 @@ public class LoginActivity extends Activity {
     EditText act_login_password;
     @BindView(R.id.act_login_btn)
     Button act_login_btn;
+    @BindView(R.id.act_login_register_btn)
+    TextView act_login_register_btn;
     private String telGet="",telTxt="";
     private String passGet="",passTxt="";
     private OkHttpUtils httpUtils;
@@ -58,11 +61,15 @@ public class LoginActivity extends Activity {
         passTxt = act_login_password.getText().toString().trim();
     }
 
-    @OnClick(R.id.act_login_btn)
+    @OnClick({R.id.act_login_btn,R.id.act_login_register_btn})
     public void onClickLogin(View view) {
         switch (view.getId()) {
             case R.id.act_login_btn:
                 requestLoginData();
+                break;
+            case R.id.act_login_register_btn:
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+//                finish();
                 break;
         }
     }

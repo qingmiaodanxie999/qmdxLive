@@ -587,14 +587,13 @@ public class CameraActivity extends Activity implements
                             mDeleteView.setVisibility(View.VISIBLE);//关闭按钮显示
                             live_id = response.getResult().getId();//直播id
                             Log.e("TAG", "live_id========="+live_id);
-                            mStreamer.setUrl(Contants.API.URL_PUSH_STREAMER+live_id);//设置推流地址
-                            Log.e("TAG", "URL========="+Contants.API.URL_PUSH_STREAMER+live_id);
-                            Log.e("TAG", "Contents.PUSH_STREAMER+live_id******  "+live_id);
+                            mStreamer.setUrl(Contants.API.URL_PUSH_STREAMER+live_id);//设置推流地址4mStreamer
                             mStreamer.startStream();
+                            Log.e("TAG", "URL========="+Contants.API.URL_PUSH_STREAMER+live_id);
                             mShootingText.setText(STOP_STRING);
                             mShootingText.postInvalidate();
                             mRecording = true;
-                            mShootingText.setVisibility(View.INVISIBLE);//隐藏直播按钮
+//                            mShootingText.setVisibility(View.INVISIBLE);//隐藏直播按钮
 //                            liveName.setVisibility(View.GONE);//隐藏直播名字
                             // TODO: 2017/3/16 0016
                             //根据直播ID修改直播状态
@@ -607,8 +606,8 @@ public class CameraActivity extends Activity implements
     }
 
     private void updateLiveStatus(int status) {
-        OkHttpUtils
-                .post()
+        httpUtils = OkHttpUtils.getInstance();
+        httpUtils.post()
                 .url(Contants.API.UPDATE_LIVE_STATUS)
                 .addParams("live_id", live_id+"")
                 .addParams("status", status+"")//0直播
@@ -622,9 +621,9 @@ public class CameraActivity extends Activity implements
                     @Override
                     public void onResponse(UpdateLive response, int id) {
                         if(response.getError_code() == 0) {
-                            ToastUtils.show(CameraActivity.this,"updateLiveStatus");
+                            ToastUtils.show(CameraActivity.this,"直播状态已经更改");
                         }else {
-                            ToastUtils.show(CameraActivity.this,"updateLiveStatus failed");
+                            ToastUtils.show(CameraActivity.this,"直播状态更改失败");
                         }
                     }
                 });
@@ -634,7 +633,6 @@ public class CameraActivity extends Activity implements
         @Override
         public CreatSteam parseNetworkResponse(Response response, int id) throws Exception {
             String string = response.body().string();
-            Log.e("TAG","CreatSteam接口接收的json数据==="+string);
             CreatSteam creatSteam = new Gson().fromJson(string, CreatSteam.class);
             Log.e("TAG", "from json CreatSteamid==="+creatSteam.getResult().getId()+
                     "pic"+creatSteam.getResult().getData().getPic()+
@@ -906,6 +904,7 @@ public class CameraActivity extends Activity implements
                     }
                     break;
                 default:
+                    Log.d("WANGDONG", "what=" + what + " msg1=" + msg1 + " msg2=" + msg2);
                     if(mStreamer.getEnableAutoRestart()) {
                         mShootingText.setText(START_STRING);
                         mShootingText.postInvalidate();
