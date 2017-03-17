@@ -25,14 +25,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile fileTree(include: '*/so', dir: 'libs/armeabi-v7a')
     compile fileTree(include: '*/so', dir: 'libs/arm64-v8a')
     compile fileTree(include: '*/so', dir: 'libs/x86')
     compile files('libs/zxing.jar')
-    compile files('libs/bugly_crash_release.jar')
     compile files('libs/libksyplayer.jar')
     compile files('libs/ksylive.jar')
+    compile files('libs/libksystat.jar')
     compile 'com.android.support:appcompat-v7:23.2.1'
     testCompile 'junit:junit:4.12'
     compile 'com.cjj.materialrefeshlayout:library:1.3.0'

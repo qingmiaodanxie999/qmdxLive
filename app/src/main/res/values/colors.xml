@@ -82,4 +82,5 @@
     <color name="font_color_44">#f2a93f</color>
 
     <color name="trans_parent">#00000000</color>
+    <color name="transparent1">#7fffffff</color><!--透明白色 -->
 </resources>

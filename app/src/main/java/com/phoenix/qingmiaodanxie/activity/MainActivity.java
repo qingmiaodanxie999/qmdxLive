@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.phoenix.qingmiaodanxie.R;
+import com.phoenix.qingmiaodanxie.camera.DemoActivity;
 import com.phoenix.qingmiaodanxie.fragment.FragmentHome;
 import com.phoenix.qingmiaodanxie.fragment.FragmentWo;
 
@@ -30,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
     RadioButton main_home;
     @BindView(R.id.main_wode)
     RadioButton main_wode;
+
+    private String phone = "";
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mFragments = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        phone = getIntent().getStringExtra("phone");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 content.setCurrentItem(1);
                 break;
             case R.id.main_live:
-                startActivity(new Intent(MainActivity.this,CameraActivity.class));
+                startActivity(new Intent(MainActivity.this,DemoActivity.class));
                 break;
         }
     }

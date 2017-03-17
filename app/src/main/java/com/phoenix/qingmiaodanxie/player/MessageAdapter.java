@@ -1,10 +1,12 @@
 package com.phoenix.qingmiaodanxie.player;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.phoenix.qingmiaodanxie.R;
 
 import java.util.List;
@@ -50,10 +52,24 @@ public class MessageAdapter extends BaseAdapter {
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
-        holder.tvcontent.setText(data.get(position));
+        // TODO: 2017/3/16 发送消息内容设置
+        String str = data.get(position);
+        String newStr1 = str.substring(0,str.indexOf(":"));
+        String newStr2 = str.substring(str.indexOf(":"),str.length());
+        holder.tvcontent.setText(Html.fromHtml("<font color='#eb4f38'>" +
+                newStr1+"</font>"+" "+newStr2), TextView.BufferType.SPANNABLE);
         return convertView;
     }
-
+    //改变字体颜色的方法
+   /* public void showTotalPrice() {
+        float total = getTotalPrice();
+        textView.setText(Html.fromHtml("<font color='#eb4f38'>" +
+                "￥" + total + "</font>"), TextView.BufferType.SPANNABLE);
+        SpannableString sp = new SpannableString("合计 ￥" + total);
+        sp.setSpan(new ForegroundColorSpan(0xFFeb4f38), 3, sp.length(),
+                Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        textView.setText(sp);
+    }*/
     private final class ViewHolder {
         TextView tvcontent;
     }

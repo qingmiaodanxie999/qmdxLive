@@ -39,7 +39,7 @@
         <TableRow android:padding="10dp">
             <TextView
                 android:layout_marginLeft="3dp"
-                android:text="我的订单"
+                android:text="我的粉丝"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_gravity="center_vertical"/>
@@ -52,7 +52,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:layout_marginLeft="@dimen/item_Padding"
-                android:text="我的收藏"
+                android:text="我的关注"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_gravity="center_vertical"/>
@@ -63,7 +63,7 @@
         <TableRow android:padding="10dp">
             <TextView
                 android:layout_marginLeft="@dimen/item_Padding"
-                android:text="收货地址"
+                android:text="我的直播列表"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_gravity="center_vertical"/>

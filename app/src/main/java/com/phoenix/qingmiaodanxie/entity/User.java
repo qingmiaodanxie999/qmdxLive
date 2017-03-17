@@ -9,7 +9,7 @@ public class User extends BaseBean {
     private String avatar;
     private String sign;
     private String password;
-
+    private String token;
     public User() {
     }
 
@@ -17,6 +17,13 @@ public class User extends BaseBean {
         this.phone = phone;
         this.password = password;
     }
+
+    public User(long uId, String phone, String password) {
+        this.id = uId;
+        this.phone = phone;
+        this.password = password;
+    }
+
     public long getId() {
         return id;
     }
@@ -62,5 +69,13 @@ public class User extends BaseBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

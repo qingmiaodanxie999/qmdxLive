@@ -21,8 +21,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PlayerFragment extends Fragment {
-    private String mDataSource = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
-
+//    private String mDataSource = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    private String mDataSource = "rtmp://cncplay.bingdou.tv/live/";
+    private String liveId;
     // 播放器的对象
     private KSYMediaPlayer ksyMediaPlayer;
     // 播放SDK提供的监听器
@@ -51,6 +52,8 @@ public class PlayerFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        liveId = getActivity().getIntent().getStringExtra("liveId");
+        mDataSource += liveId;
     }
 
     @Override

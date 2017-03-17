@@ -97,7 +97,7 @@ public class FragmentHot extends Fragment {
     }
 
     private void getFavLive(final int page) {
-        String url = Contants.API.JINGXUAN + "/live/find.json";
+        String url = Contants.API.HOT;
         Log.e("TAG", "url=====-=" + url);
         httpUtils.post()
                 .url(url)

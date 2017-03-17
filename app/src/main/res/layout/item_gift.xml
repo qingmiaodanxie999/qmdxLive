@@ -55,9 +55,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dip"
-        android:layout_marginLeft="10dip"
+        android:layout_marginLeft="15dip"
         android:layout_alignRight="@id/rlparent"
-        android:src="@mipmap/hh1" />
+        android:src="@mipmap/zuan" />
 
     <com.phoenix.qingmiaodanxie.player.MagicTextView
         android:id="@+id/giftNum"

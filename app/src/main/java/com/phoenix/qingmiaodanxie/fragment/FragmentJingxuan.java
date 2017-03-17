@@ -1,6 +1,7 @@
 package com.phoenix.qingmiaodanxie.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -89,8 +90,10 @@ public class FragmentJingxuan extends Fragment {
         mAdapter.setOnMultiItemClickListener(new OnMultiItemClickListeners<LiveBean.ResultBean.ListBean>() {
             @Override
             public void onItemClick(ViewHolder viewHolder, LiveBean.ResultBean.ListBean data, int position, int viewType) {
-                PlayerActivity.start(getActivity());
-
+                Intent intent = new Intent(getActivity(), PlayerActivity.class);
+                long liveId= data.getId();
+                intent.putExtra("liveId", liveId+"");
+                startActivity(intent);
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -101,7 +104,7 @@ public class FragmentJingxuan extends Fragment {
     }
 
     private void getFavLive(final int page) {
-        String url = Contants.API.JINGXUAN + "/live/find.json";
+        String url = Contants.API.JINGXUAN;
         Log.e("TAG", "url=====-=" + url);
         httpUtils.post()
                 .url(url)

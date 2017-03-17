@@ -173,13 +173,15 @@ public class UiFragment extends Fragment{
         });
         softKeyboardListener();
         for (int i = 0; i < 20; i++) {
-            messageData.add("凤飞飞：求关注"+i);
+            messageData.add("凤飞飞: 求关注"+i);
         }
         messageAdapter = new MessageAdapter(getActivity(), messageData);
         lvmessage.setAdapter(messageAdapter);
         lvmessage.setSelection(messageData.size());
         startTimer();
     }
+
+
     /**
      * 循环执行线程
      */
@@ -403,7 +405,7 @@ public class UiFragment extends Fragment{
     private void showGift(String tag) {
         View giftView = llgiftcontent.findViewWithTag(tag);
         if (giftView == null) {//该用户不在礼物显示列表
-
+            // TODO: 2017/3/16
             if (llgiftcontent.getChildCount() > 2) {//如果正在显示的礼物的个数超过两个，那么就移除最后一次更新时间比较长的
                 View giftView1 = llgiftcontent.getChildAt(0);
                 RoundImageView picTv1 = (RoundImageView) giftView1.findViewById(R.id.crvheadimage);
@@ -422,9 +424,11 @@ public class UiFragment extends Fragment{
             giftView.setTag(tag);/*设置view标识*/
 
             RoundImageView crvheadimage = (RoundImageView) giftView.findViewById(R.id.crvheadimage);
+//            RoundImageView giftimage = (RoundImageView) giftView.findViewById(R.id.ivgift);
             final MagicTextView giftNum = (MagicTextView) giftView.findViewById(R.id.giftNum);/*找到数量控件*/
             giftNum.setText("x1");/*设置礼物数量*/
             crvheadimage.setTag(System.currentTimeMillis());/*设置时间标记*/
+//            giftimage.setTag(System.currentTimeMillis());/*设置时间标记*/
             giftNum.setTag(1);/*给数量控件设置标记*/
 
             llgiftcontent.addView(giftView);/*将礼物的View添加到礼物的ViewGroup中*/
@@ -446,11 +450,13 @@ public class UiFragment extends Fragment{
             });
         } else {/*该用户在礼物显示列表*/
             RoundImageView crvheadimage = (RoundImageView) giftView.findViewById(R.id.crvheadimage);/*找到头像控件*/
+//            RoundImageView giftimage = (RoundImageView) giftView.findViewById(R.id.ivgift);
             MagicTextView giftNum = (MagicTextView) giftView.findViewById(R.id.giftNum);/*找到数量控件*/
             int showNum = (Integer) giftNum.getTag() + 1;
             giftNum.setText("x" + showNum);
             giftNum.setTag(showNum);
             crvheadimage.setTag(System.currentTimeMillis());
+//            giftimage.setTag(System.currentTimeMillis());
             giftNumAnim.start(giftNum);
         }
     }

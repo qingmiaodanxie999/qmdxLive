@@ -11,7 +11,9 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.phoenix.qingmiaodanxie.R;
 import com.phoenix.qingmiaodanxie.entity.Login;
+import com.phoenix.qingmiaodanxie.entity.User;
 import com.phoenix.qingmiaodanxie.http.Contants;
+import com.phoenix.qingmiaodanxie.utils.Preferences;
 import com.phoenix.qingmiaodanxie.utils.SharedUtils;
 import com.phoenix.qingmiaodanxie.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -33,6 +35,8 @@ public class LoginActivity extends Activity {
     private String telGet="",telTxt="";
     private String passGet="",passTxt="";
     private OkHttpUtils httpUtils;
+
+    private long uId =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +79,7 @@ public class LoginActivity extends Activity {
         }
     }
 
-    private void request() {
+    public void request() {
         String url = Contants.API.LOGIN;
         Log.e("TAG", "url=====-=" + url);
         httpUtils = OkHttpUtils.getInstance();
@@ -94,7 +98,9 @@ public class LoginActivity extends Activity {
                     @Override
                     public void onResponse(Login response, int id) {
                         if (response != null) {
+                            uId = response.getResult().getId();
                             ToastUtils.show(LoginActivity.this, "登录成功");
+                            Preferences.setAccountUser(new User(uId,telTxt,passTxt),"access_token");
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -119,6 +125,9 @@ public class LoginActivity extends Activity {
             String string = response.body().string();
             Log.e("TAG","login接口接收的json数据==="+string);
             Login login = new Gson().fromJson(string, Login.class);
+            uId = login.getResult().getId();
+            Log.e("TAG","login接口接收用户==="+login.getResult().getUser_data().getUser_name()+
+                    "id==="+uId);
             return login;
         }
     }
